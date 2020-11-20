@@ -1,0 +1,38 @@
+body{
+    background-color: rgb(226, 222, 157);
+    margin: 20px;
+}
+
+.opening{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.opening p{
+    font-size: 40px;
+    
+}
+
+form{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.question{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hide{
+    display: none;
+}
+

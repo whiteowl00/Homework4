@@ -7,5 +7,5 @@ This is a set of Quiz about basic Coding knowledge
 Mainly JavaScript, some of HTML and CSS
 
 ## Contributor
-Aaron (with some help of tutor)
+Aaron
 

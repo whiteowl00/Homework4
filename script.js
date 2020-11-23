@@ -1,5 +1,6 @@
 
 //Start fuction
+var doneQuiz = false
 const startButton = document.getElementById("start-btn")
 const finishButton = document.getElementById("finish-btn")
 const questionContainer = document.getElementById("questionBox")
@@ -19,6 +20,7 @@ function startQuiz(){
     let time = timeleft * 1;
     const countDown = document.getElementById('timer');
     
+    
     setInterval(startCountDown, 1000);
     
     
@@ -35,9 +37,13 @@ function startQuiz(){
                 countDown.innerHTML = "00:00"
                 questionContainer.classList.add("hide")
                 usernameElement.classList.remove("hide")
-            }else if(document.querySelector('.question5').addEventListener("click", checkAnswer)){
+            }
+
+            if(doneQuiz){
                 console.log("Quiz is done");
                 clearInterval(time)
+                countDown.innerHTML = "00:00"
+                countDown.classList.add("hide")
                 questionContainer.classList.add("hide")
                 usernameElement.classList.remove("hide")
             }
@@ -69,14 +75,38 @@ function checkAnswer(event) {
         
     }
 
+    if(event.target.classList.contains("lastQuestion")){
+        doneQuiz = true
+        
+    }
+
  
     document.querySelector(`.question${questionIndex}`).classList.add('hide')
     document.querySelector(`.question${questionIndex}`).removeEventListener('click', checkAnswer )
     questionIndex++
-    document.querySelector(`.question${questionIndex}`).classList.remove('hide')
-    document.querySelector(`.question${questionIndex}`).addEventListener('click', checkAnswer)
+    if(questionIndex <=5){
+        document.querySelector(`.question${questionIndex}`).classList.remove('hide')
+        document.querySelector(`.question${questionIndex}`).addEventListener('click', checkAnswer)
+        console.log("Question is Done");
+        
+    }
+    
     
 }
 
 
+
 // correctTotal.innerHTML = gameScore
+
+const showScore = document.querySelector(".submit")
+const userElement = document.getElementById("nameText")
+const scoreElement = document.querySelector(".gameScore")
+showScore.addEventListener("click", result)
+
+function result(event){
+    event.preventDefault();
+    var user = userElement.value;
+    console.log(user);
+    document.querySelector(".result").classList.remove('hide')
+    scoreElement.innerHTML = `${user}: ${gameScore}`
+}
